@@ -23,13 +23,6 @@ Lancement manuel :
 npm start
 ```
 
-Vérification syntaxique :
-
-```bash
-npm run check
-npm audit --omit=dev
-```
-
 ## Architecture
 
 ```text
