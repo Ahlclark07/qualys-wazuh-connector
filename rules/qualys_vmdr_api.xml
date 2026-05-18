@@ -1,0 +1,45 @@
+<!-- ID range: 87010-87099 -->
+<group name="qualys,qualys_vmdr,vulnerability,">
+  <rule id="87010" level="0">
+    <field name="integration">^qualys_vmdr$</field>
+    <description>Qualys VMDR API event grouped.</description>
+  </rule>
+
+  <rule id="87011" level="13">
+    <if_sid>87010</if_sid>
+    <field name="event_type">^vulnerability_detection$</field>
+    <field name="risk_tier">^critical$</field>
+    <field name="internet_facing">^true$</field>
+    <description>Qualys VMDR: critical Internet-facing vulnerability on $(asset_ip) - QID $(qid) - $(title)</description>
+    <group>vulnerability,external_exposure,pci_dss_6.2,pci_dss_11.2,gpg13_4.1,gdpr_IV_35.7.d,</group>
+  </rule>
+
+  <rule id="87012" level="11">
+    <if_sid>87010</if_sid>
+    <field name="risk_tier">^critical$</field>
+    <description>Qualys VMDR: critical vulnerability on $(asset_ip) - QID $(qid) - $(title)</description>
+    <group>vulnerability,pci_dss_6.2,pci_dss_11.2,gpg13_4.1,gdpr_IV_35.7.d,</group>
+  </rule>
+
+  <rule id="87013" level="10">
+    <if_sid>87010</if_sid>
+    <field name="status">^Re-Opened$</field>
+    <description>Qualys VMDR: reopened vulnerability on $(asset_ip) - QID $(qid) - $(title)</description>
+    <group>vulnerability,remediation_regression,pci_dss_6.2,pci_dss_11.2,</group>
+  </rule>
+
+  <rule id="87014" level="9">
+    <if_sid>87010</if_sid>
+    <field name="risk_tier">^high$</field>
+    <description>Qualys VMDR: high-risk vulnerability on $(asset_ip) - QID $(qid) - $(title)</description>
+    <group>vulnerability,pci_dss_6.2,pci_dss_11.2,</group>
+  </rule>
+
+  <rule id="87015" level="6">
+    <if_sid>87010</if_sid>
+    <field name="risk_tier">^medium$</field>
+    <description>Qualys VMDR: medium-risk vulnerability on $(asset_ip) - QID $(qid) - $(title)</description>
+    <group>vulnerability,</group>
+  </rule>
+</group>
+
